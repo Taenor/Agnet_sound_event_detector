@@ -1,5 +1,5 @@
 # Agnet_sound_event_detector
-This repository has for objective to explore the posibilities of detecting **sudent sound events**, in particular gunshots, using state of the art **sound processing** and **AI**
+This repository has for objective to explore the posibilities of detecting **sudent sound events** in real time, in particular gunshots, using state of the art **sound processing** and **AI**
 
 I took inspiration on 3 scientific articles to experiment, trying to reproduce the described results :
 

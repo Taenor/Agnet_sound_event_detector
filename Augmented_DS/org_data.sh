@@ -1,7 +1,7 @@
 #!/bin/bash
 
 fr=$( bash <<EOF
-find ./original_temp/ -name "gun_shot.*.wav"
+find ./original/ -name "gun_shot.*.wav"
 EOF
 )
 echo $fr
@@ -19,7 +19,7 @@ do
 done 
 
 bck=$( bash <<EOF
-find ./original_temp/ ! -name "gun_shot.*.wav"
+find ./original/ ! -name "gun_shot.*.wav"
 EOF
 )
 echo $bck

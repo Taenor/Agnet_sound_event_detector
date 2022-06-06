@@ -12,4 +12,5 @@ I took inspiration on 4 scientific articles to experiment, trying to reproduce t
 
 Other ressources :
 
-- https://github.com/kan-bayashi/ParallelWaveGAN : GAN Generator to create more usefull audio clips
+- https://github.com/kan-bayashi/ParallelWaveGAN : GAN Generator to create vocoder
+- https://github.com/chrisdonahue/wavegan : GAN Generator to create more usefull audio clips

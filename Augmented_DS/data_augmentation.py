@@ -25,7 +25,7 @@ while line:
     m = p.search(f)
 
     # ------------ Adding Noise to the Original audio ------------
-    file_contents = tf.io.read_file(filename_wav)
+    """file_contents = tf.io.read_file(filename_wav)
     wav, sample_rate = tf.audio.decode_wav(
           file_contents,
           desired_channels=1)
@@ -46,7 +46,7 @@ while line:
           name=None
         )
     tf.io.write_file(('./bruit/'+f[0:m.end()-1]+'_Bruit'+f[m.end()-1:len(f)]),bruited_wav)
-    
+    """
     
     
     # ------------ Repitching the Original audio ------------
@@ -77,7 +77,7 @@ while line:
 
     # ------------ Time-Stretching on the Original audio ------------
     n_time_shift = random.uniform(0.7, 1.3)
-    print(n_time_shift)
+    #print(n_time_shift)
     audio, sr = librosa.load(filename_wav)
     audio_change = librosa.effects.time_stretch(audio, n_time_shift)
     if (len(audio_change) > 44100):
@@ -125,7 +125,7 @@ while line:
     padding = np.zeros(int(buffer*n_timesh))
     if (random.random() > 1) :
       block_bis = np.concatenate((audio[int(buffer*n_timesh) : len(audio)],padding),axis = 0)
-      print(len(block_bis))
+      #print(len(block_bis))
       wav_out_bis = tf.convert_to_tensor(block_bis.reshape((len(block_bis),1)),dtype=tf.float32)
       wav_out_bis = tf.audio.encode_wav(
       wav_out_bis,

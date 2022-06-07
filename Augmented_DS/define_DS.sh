@@ -18,7 +18,13 @@ do
         j=$(expr $tot*$i/100 | bc)
         echo $a
         echo $j
-        find ./ -path "*/$a/*.wav" | shuf -n $j > ./listes/list_$a.txt
-        find ./ -path "*/$a/*.wav" | shuf -n $j >> ./list_test.txt
+        if [[ $a == gun_shot ]]
+        then
+          find ./ -path "./foreground/$a/*.wav" | shuf -n $j > ./listes/list_$a.txt
+          find ./ -path "./foreground/$a/*.wav" | shuf -n $j >> ./list_test.txt
+        else
+          find ./ -path "./background/$a/*.wav" | shuf -n $j > ./listes/list_$a.txt
+          find ./ -path "./background/$a/*.wav" | shuf -n $j >> ./list_test.txt
+        fi
         let counter++
 done

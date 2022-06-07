@@ -1,5 +1,6 @@
 fr=$( bash <<EOF
-find ./original/ -name "*.wav"
+find ./background/ -name "*.wav"
+find ./foreground/ -name "*.wav"
 find ./bruit/ -name "*.wav"
 find ./lower_vol/ -name "*.wav"
 find ./shift_pitch/ -name "*.wav"

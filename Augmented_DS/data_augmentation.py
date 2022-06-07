@@ -18,7 +18,7 @@ file = open('list.txt', "r")
 # utilisez readline() pour lire la première ligne
 line = file.readline()
 while line:
-    filename_wav = './original/'+line[:-1]
+    filename_wav = line[:-1]
     print(filename_wav)
     f = line[:-1]
     p = re.compile('\.[\w\d]*\.')

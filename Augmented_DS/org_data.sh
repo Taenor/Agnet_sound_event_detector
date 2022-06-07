@@ -4,7 +4,7 @@ fr=$( bash <<EOF
 find ./original/ -name "gun_shot.*.wav"
 EOF
 )
-echo $fr
+#echo $fr
 #echo "hello"
 rm -r ./foreground
 mkdir -p ./foreground/gun_shot
@@ -22,7 +22,7 @@ bck=$( bash <<EOF
 find ./original/ ! -name "gun_shot.*.wav"
 EOF
 )
-echo $bck
+#echo $bck
 rm -r ./background
 mkdir ./background
 #echo "hello"
@@ -32,7 +32,7 @@ do
    name=$(basename $i)
    step=${name%.*}
    tag=${step%.*}
-   echo $tag
+   #echo $tag
    #sox $i -r 16000 ./Wav/$name
    mkdir -p ./background/$tag && cp $i ./background/$tag
 done 

@@ -10,7 +10,8 @@ outfolder = './scapes'
 fg_folder = './foreground'
 bg_folder = './background'
 
-n_soundscapes = 10000
+n_soundscapes_gun = 10#000
+n_soundscapes_other = 5#000
 ref_db = -50
 duration = 2.0 
 
@@ -46,9 +47,9 @@ time_stretch_max = 1
     
 # Generate 1000 soundscapes using a truncated normal distribution of start times
 
-for n in range(n_soundscapes):
+for n in range(n_soundscapes_gun):
     
-    print('Generating soundscape: {:d}/{:d}'.format(n+1, n_soundscapes))
+    print('Generating soundscape with gunshot: {:d}/{:d}'.format(n+1, n_soundscapes_gun))
     
     # create a scaper
     sc = scaper.Scaper(duration, fg_folder, bg_folder)
@@ -63,7 +64,7 @@ for n in range(n_soundscapes):
     # add random number of foreground events
     #n_events = np.random.randint(min_events, max_events+1)
     #for _ in range(n_events):
-    sc.add_event(label=('choose', []), 
+    sc.add_event(label=('const','gun_shot'), 
                     source_file=('choose', []), 
                     source_time=(source_time_dist, source_time), 
                     event_time=(event_time_dist, event_time), 
@@ -76,6 +77,47 @@ for n in range(n_soundscapes):
     audiofile = os.path.join(outfolder, "gun_shot.Soundscape_{:d}.wav".format(n))
     jamsfile = os.path.join(outfolder, "gun_shot.Soundscape_{:d}.jams".format(n))
     txtfile = os.path.join(outfolder, "gun_shot.Soundscape_{:d}.txt".format(n))
+    
+    sc.generate(audiofile,
+                allow_repeated_label=True,
+                allow_repeated_source=False,
+                reverb=0.1,
+                disable_sox_warnings=True,
+                no_audio=False,
+                txt_path=None)
+
+
+
+
+for n in range(n_soundscapes_other):
+    
+    print('Generating soundscape without gunshot: {:d}/{:d}'.format(n+1, n_soundscapes_other))
+    
+    # create a scaper
+    sc = scaper.Scaper(duration, fg_folder, bg_folder)
+    sc.protected_labels = []
+    sc.ref_db = ref_db
+    
+    # add background
+    sc.add_background(label=('choose', []), 
+                      source_file=('choose', []), 
+                      source_time=('const', 0))
+
+    # add random number of foreground events
+    #n_events = np.random.randint(min_events, max_events+1)
+    #for _ in range(n_events):
+    sc.add_event(label=('choose', ['clapping', 'door_slamming', 'fireworks', 'snapping']),  #'microphone_tap' 'glass_breaking'
+                    source_file=('choose', []),
+                    source_time=(source_time_dist, source_time), 
+                    event_time=(event_time_dist, event_time), 
+                    event_duration=(event_duration_dist, event_duration), 
+                    snr=(snr_dist, snr_min, snr_max),
+                    pitch_shift=(pitch_dist, pitch_min, pitch_max),
+                    time_stretch=None)
+    # generate
+    audiofile = os.path.join(outfolder, "other.Soundscape_{:d}.wav".format(n))
+    jamsfile = os.path.join(outfolder, "other.Soundscape_{:d}.jams".format(n))
+    txtfile = os.path.join(outfolder, "other.Soundscape_{:d}.txt".format(n))
     
     sc.generate(audiofile,
                 allow_repeated_label=True,

@@ -10,8 +10,8 @@ outfolder = './scapes'
 fg_folder = './foreground'
 bg_folder = './background'
 
-n_soundscapes_gun = 10#000
-n_soundscapes_other = 5#000
+n_soundscapes_gun = 10000
+n_soundscapes_other = 5000
 ref_db = -50
 duration = 2.0 
 

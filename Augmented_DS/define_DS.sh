@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -r list_test.txt 
+rm -r list.txt 
 
 folders=$( bash <<EOF
 ls ./foreground
@@ -21,10 +21,10 @@ do
         if [[ $a == gun_shot || $a == door_slamming || $a == fireworks || $a == clapping || $a == glass_breaking || $a == microphone_tap || $a == snapping ]]
         then
           find ./ -path "./foreground/$a/*.wav" | shuf -n $j > ./listes/list_$a.txt
-          find ./ -path "./foreground/$a/*.wav" | shuf -n $j >> ./list_test.txt
+          find ./ -path "./foreground/$a/*.wav" | shuf -n $j >> ./list.txt
         else
           find ./ -path "./background/$a/*.wav" | shuf -n $j > ./listes/list_$a.txt
-          find ./ -path "./background/$a/*.wav" | shuf -n $j >> ./list_test.txt
+          find ./ -path "./background/$a/*.wav" | shuf -n $j >> ./list.txt
         fi
         let counter++
 done

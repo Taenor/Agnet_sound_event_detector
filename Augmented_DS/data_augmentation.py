@@ -21,7 +21,7 @@ while line:
     filename_wav = line[:-1]
     print(filename_wav)
     f = line[:-1]
-    p = re.compile('\.[\w\d]*\.')
+    p = re.compile('\.[\w\d-]*\.')
     m = p.search(f)
 
     # ------------ Adding Noise to the Original audio ------------

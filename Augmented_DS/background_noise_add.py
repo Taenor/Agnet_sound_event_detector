@@ -15,8 +15,8 @@ out_array=[outfolder_SNR30, outfolder_SNR15, outfolder_SNR0, outfolder_SNRneg15]
 fg_folder = './foreground'
 bg_folder = './background'
 
-n_soundscapes_gun = 20000
-n_soundscapes_other = 20000
+n_soundscapes_gun = 5000
+n_soundscapes_other = 5000
 ref_db = -50
 duration = 2.0 
 
@@ -120,7 +120,7 @@ for m in range(4):
                         source_time=(source_time_dist, source_time), 
                         event_time=(event_time_dist, event_time), 
                         event_duration=(event_duration_dist, event_duration), 
-                        snr=(snr_dist, snr_min, snr_max),
+                        snr=(snr_dist, snr),
                         pitch_shift=(pitch_dist, pitch_min, pitch_max),
                         time_stretch=None)
         # generate

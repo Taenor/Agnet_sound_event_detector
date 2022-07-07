@@ -1,5 +1,5 @@
 data=$( bash <<EOF
-find ./scapes -name "*.wav"
+find $1 -name "*.wav"
 EOF
 )
 rm -r ./bruit

@@ -8,7 +8,7 @@ outfolder_SNR30 = './scapes_SNR30'
 outfolder_SNR15 = './scapes_SNR15'
 outfolder_SNR0 = './scapes_SNR0'
 outfolder_SNRneg15 = './scapes_SNR-15'
-
+out_array=[outfolder_SNR30, outfolder_SNR15, outfolder_SNR0, outfolder_SNRneg15]
 
 
 # SCAPER SETTINGS
@@ -51,10 +51,11 @@ time_stretch_min = 1
 time_stretch_max = 1
     
 # Generate 1000 soundscapes using a truncated normal distribution of start times
-for n in range(4):
-    snr = snr-15
+for m in range(4):
+    outfolder=out_array[m]
+    print(outfolder)
     for n in range(n_soundscapes_gun):
-
+        
         if (n%1000==0):
             print('Generating soundscape with gunshot: {:d}/{:d}'.format(n+1, n_soundscapes_gun))
 

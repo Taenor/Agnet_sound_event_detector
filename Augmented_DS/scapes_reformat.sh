@@ -1,5 +1,8 @@
 data=$( bash <<EOF
 find $1 -name "*.wav"
+find $2 -name "*.wav"
+find $3 -name "*.wav"
+find $4 -name "*.wav"
 EOF
 )
 rm -r ./bruit

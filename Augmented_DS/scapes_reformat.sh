@@ -5,10 +5,10 @@ find $3 -name "*.wav"
 find $4 -name "*.wav"
 EOF
 )
-rm -r ./bruit
-mkdir ./bruit
+rm -r ./SNR
+mkdir ./SNR
 for i in $data
 do 
    echo $i
-   sox $i -r 22050 -b 16 -c 1 ./bruit/$(basename $i)
+   sox $i -r 22050 -b 16 -c 1 ./SNR/$(basename $i)
 done

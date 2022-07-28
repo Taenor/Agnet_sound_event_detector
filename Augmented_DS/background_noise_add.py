@@ -2,13 +2,14 @@ import scaper
 import numpy as np
 import os
 import librosa
+import random
 
 # OUTPUT FOLDER
-outfolder_SNR30 = './scapes_SNR30'
-outfolder_SNR15 = './scapes_SNR15'
+outfolder_SNR10 = './scapes_SNR10'
+outfolder_SNR5 = './scapes_SNR5'
 outfolder_SNR0 = './scapes_SNR0'
-outfolder_SNRneg15 = './scapes_SNR-15'
-out_array=[outfolder_SNR30, outfolder_SNR15, outfolder_SNR0, outfolder_SNRneg15]
+outfolder_SNRneg5 = './scapes_SNR-5'
+out_array=[outfolder_SNR10, outfolder_SNR5, outfolder_SNR0, outfolder_SNRneg5]
 
 
 # SCAPER SETTINGS
@@ -39,7 +40,7 @@ event_duration_dist = 'const'
 event_duration = 2.0
 
 snr_dist = 'const'
-snr = 30
+snr = 10
 # snr_max = 30
 
 pitch_dist = 'uniform'
@@ -82,9 +83,9 @@ for m in range(4):
                         time_stretch=None)
 
         # generate
-        audiofile = os.path.join(outfolder, "gun_shot.Soundscape_{:d}.wav".format(n))
-        jamsfile = os.path.join(outfolder, "gun_shot.Soundscape_{:d}.jams".format(n))
-        txtfile = os.path.join(outfolder, "gun_shot.Soundscape_{:d}.txt".format(n))
+        audiofile = os.path.join(outfolder, f"gun_shot.Soundscape_{snr}_{n}.wav")
+        jamsfile = os.path.join(outfolder, f"gun_shot.Soundscape_{snr}_{n}.jams")
+        txtfile = os.path.join(outfolder, f"gun_shot.Soundscape_{snr}_{n}.txt")
 
         sc.generate(audiofile,
                     allow_repeated_label=True,
@@ -115,18 +116,23 @@ for m in range(4):
         # add random number of foreground events
         #n_events = np.random.randint(min_events, max_events+1)
         #for _ in range(n_events):
-        sc.add_event(label=('choose', ['clapping', 'door_slamming', 'fireworks', 'snapping']),  #'microphone_tap' 'glass_breaking'
-                        source_file=('choose', []),
-                        source_time=(source_time_dist, source_time), 
-                        event_time=(event_time_dist, event_time), 
-                        event_duration=(event_duration_dist, event_duration), 
-                        snr=(snr_dist, snr),
-                        pitch_shift=(pitch_dist, pitch_min, pitch_max),
-                        time_stretch=None)
+        labels = ['clapping', 'door_slamming', 'fireworks', 'snapping','microphone_tap', 'glass_breaking']
+        r_label= random.randint(0, 5)
+        event_param= {
+          'label' : ('const',labels[r_label] ),
+          'source_file':  ('choose', []),
+          'source_time' : (source_time_dist, source_time), 
+          'event_time' : (event_time_dist, event_time), 
+          'event_duration' : (event_duration_dist, event_duration), 
+          'snr' : (snr_dist, snr),
+          'pitch_shift' : (pitch_dist, pitch_min, pitch_max),
+          'time_stretch' : None
+        }
+        sc.add_event(**event_param)
         # generate
-        audiofile = os.path.join(outfolder, "other.Soundscape_{:d}.wav".format(n))
-        jamsfile = os.path.join(outfolder, "other.Soundscape_{:d}.jams".format(n))
-        txtfile = os.path.join(outfolder, "other.Soundscape_{:d}.txt".format(n))
+        audiofile = os.path.join(outfolder, f"{labels[r_label]}.Soundscape_{snr}_{n}.wav")
+        jamsfile = os.path.join(outfolder, f"{labels[r_label]}.Soundscape_{snr}_{n}.jams")
+        txtfile = os.path.join(outfolder, f"{labels[r_label]}.Soundscape_{snr}_{n}.txt")
 
         sc.generate(audiofile,
                     allow_repeated_label=True,
@@ -135,5 +141,4 @@ for m in range(4):
                     disable_sox_warnings=True,
                     no_audio=False,
                     txt_path=None)
-    snr = snr-15
-    
+    snr = snr-5

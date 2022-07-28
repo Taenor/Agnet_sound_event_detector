@@ -25,7 +25,7 @@ while line:
     m = p.search(f)
 
     # ------------ Adding Noise to the Original audio ------------
-    """file_contents = tf.io.read_file(filename_wav)
+    file_contents = tf.io.read_file(filename_wav)
     wav, sample_rate = tf.audio.decode_wav(
           file_contents,
           desired_channels=1)
@@ -33,7 +33,7 @@ while line:
     #print(wav)
     wav_list = np.asarray(wav.numpy())
     # print(wav)
-    sigma = 0.02*random.random()
+    sigma = 0.01*random.random()
     for k in range(0,len(wav_list)) :
         wav_list[k] = wav_list[k] + aleaGauss(sigma)
     # print(wav)
@@ -46,7 +46,7 @@ while line:
           name=None
         )
     tf.io.write_file(('./bruit/'+f[0:m.end()-1]+'_Bruit'+f[m.end()-1:len(f)]),bruited_wav)
-    """
+    
     
     
     # ------------ Repitching the Original audio ------------

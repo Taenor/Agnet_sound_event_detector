@@ -3,6 +3,7 @@ fr=$( bash <<EOF
 #find ./foreground/ -name "*.wav"
 cat list.txt
 find ./bruit/ -name "*.wav"
+find ./SNR/ -name "*.wav"
 # find ./lower_vol/ -name "*.wav"
 # find ./shift_pitch/ -name "*.wav"
 # find ./time_shift/ -name "*.wav"

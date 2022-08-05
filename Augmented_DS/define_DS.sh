@@ -18,7 +18,7 @@ do
         j=$(expr $tot*$i/100 | bc)
         echo $a
         echo $j
-        if [[ $a == gun_shot || $a == door_slamming || $a == fireworks || $a == clapping || $a == glass_breaking || $a == microphone_tap || $a == snapping ]]
+        if [[ $a == gun_shot || $a == door_slamming || $a == fireworks || $a == clapping || $a == glass_breaking || $a == microphone_tap || $a == snapping || $a == car_horn || $a == crash || $a == dog_bark || $a == pothole || $a == scream || $a == tire ]]
         then
           find ./ -path "./foreground/$a/*.wav" | shuf -n $j > ./listes/list_$a.txt
           find ./ -path "./foreground/$a/*.wav" | shuf -n $j >> ./list.txt

@@ -66,9 +66,17 @@ for m in range(4):
         sc.ref_db = ref_db
 
         # add background
-        sc.add_background(label=('choose', []), 
-                          source_file=('choose', []), 
-                          source_time=('const', 0))
+        bg_labels = ['acceleration', 'air_conditioner', 'applause', 'car_music','children_playing', 'drilling', 'driving', 'engine_idling', 'foot_steps', 'household', 'jackhammer', 'meteo', 'other', 'siren', 'street_music', 'talking']
+        bg_r_label= random.randint(0, 15)
+        bg_param= {
+          'label' : ('const',bg_labels[bg_r_label] ),
+          'source_file':  ('choose', []),
+          'source_time' : ('const', 0) 
+        }
+        sc.add_background(**event_param)
+#         sc.add_background(label=('choose', []), 
+#                           source_file=('choose', []), 
+#                           source_time=('const', 0))
 
         # add random number of foreground events
         #n_events = np.random.randint(min_events, max_events+1)
@@ -83,9 +91,9 @@ for m in range(4):
                         time_stretch=None)
 
         # generate
-        audiofile = os.path.join(outfolder, f"gun_shot.Soundscape_{snr}_{n}.wav")
-        jamsfile = os.path.join(outfolder, f"gun_shot.Soundscape_{snr}_{n}.jams")
-        txtfile = os.path.join(outfolder, f"gun_shot.Soundscape_{snr}_{n}.txt")
+        audiofile = os.path.join(outfolder, f"gun_shot.{bg_labels[bg_r_label]}.Soundscape_{snr}_{n}.wav")
+        jamsfile = os.path.join(outfolder, f"gun_shot.{bg_labels[bg_r_label]}.Soundscape_{snr}_{n}.jams")
+        txtfile = os.path.join(outfolder, f"gun_shot.{bg_labels[bg_r_label]}.Soundscape_{snr}_{n}.txt")
 
         sc.generate(audiofile,
                     allow_repeated_label=True,
@@ -109,15 +117,23 @@ for m in range(4):
         sc.ref_db = ref_db
 
         # add background
-        sc.add_background(label=('choose', []), 
-                          source_file=('choose', []), 
-                          source_time=('const', 0))
+        bg_labels = ['acceleration', 'air_conditioner', 'applause', 'car_music','children_playing', 'drilling', 'driving', 'engine_idling', 'foot_steps', 'household', 'jackhammer', 'meteo', 'other', 'siren', 'street_music', 'talking']
+        bg_r_label= random.randint(0, 15)
+        bg_param= {
+          'label' : ('const',bg_labels[bg_r_label] ),
+          'source_file':  ('choose', []),
+          'source_time' : ('const', 0) 
+        }
+        sc.add_background(**event_param)
+#         sc.add_background(label=('choose', []), 
+#                           source_file=('choose', []), 
+#                           source_time=('const', 0))
 
         # add random number of foreground events
         #n_events = np.random.randint(min_events, max_events+1)
         #for _ in range(n_events):
-        labels = ['clapping', 'door_slamming', 'fireworks', 'snapping','microphone_tap', 'glass_breaking']
-        r_label= random.randint(0, 5)
+        labels = ['car_horn', 'clapping', 'crash', 'dog_bark', 'door_slamming', 'fireworks', 'glass_breaking', 'microphone_tap', 'pothole', 'scream', 'snapping', 'tire']
+        r_label= random.randint(0, 11)
         event_param= {
           'label' : ('const',labels[r_label] ),
           'source_file':  ('choose', []),
@@ -130,9 +146,9 @@ for m in range(4):
         }
         sc.add_event(**event_param)
         # generate
-        audiofile = os.path.join(outfolder, f"{labels[r_label]}.Soundscape_{snr}_{n}.wav")
-        jamsfile = os.path.join(outfolder, f"{labels[r_label]}.Soundscape_{snr}_{n}.jams")
-        txtfile = os.path.join(outfolder, f"{labels[r_label]}.Soundscape_{snr}_{n}.txt")
+        audiofile = os.path.join(outfolder, f"{labels[r_label]}.{bg_labels[bg_r_label]}.Soundscape_{snr}_{n}.wav")
+        jamsfile = os.path.join(outfolder, f"{labels[r_label]}.{bg_labels[bg_r_label]}.Soundscape_{snr}_{n}.jams")
+        txtfile = os.path.join(outfolder, f"{labels[r_label]}.{bg_labels[bg_r_label]}.Soundscape_{snr}_{n}.txt")
 
         sc.generate(audiofile,
                     allow_repeated_label=True,

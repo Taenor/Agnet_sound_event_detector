@@ -73,7 +73,7 @@ for m in range(4):
           'source_file':  ('choose', []),
           'source_time' : ('const', 0) 
         }
-        sc.add_background(**event_param)
+        sc.add_background(**bg_param)
 #         sc.add_background(label=('choose', []), 
 #                           source_file=('choose', []), 
 #                           source_time=('const', 0))
@@ -124,7 +124,7 @@ for m in range(4):
           'source_file':  ('choose', []),
           'source_time' : ('const', 0) 
         }
-        sc.add_background(**event_param)
+        sc.add_background(**bg_param)
 #         sc.add_background(label=('choose', []), 
 #                           source_file=('choose', []), 
 #                           source_time=('const', 0))

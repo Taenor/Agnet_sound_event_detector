@@ -1,10 +1,8 @@
 # Agnet_sound_event_detector
 This repository has for objective to explore the posibilities of detecting **sudent sound events** in real time, in particular gunshots, using state of the art **sound processing** and **AI**
 
-![First_Schematic_GS_Detector](https://user-images.githubusercontent.com/39013240/171027112-b8b4d9c6-27e9-487a-84f0-8e2d8c3794b5.jpg)
-
-**The Augmented dataset part is for Training and the GAN dataset is for training a Generative Adversarial Network to generate gunshot waveforms**
-
+-**The Augmented dataset part is for Training**
+-**the GAN dataset is for training a Generative Adversarial Network to generate gunshot waveforms**
 
 I took inspiration on 4 scientific articles to experiment, trying to reproduce the described results :
 
